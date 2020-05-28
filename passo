@@ -1,0 +1,16 @@
+Limpar CP  (SP_CUBO_CUSTOS_ATUALIZA_CP  deletar CALC_H, ORCADO_AJUSTES, AJUSTE_ASSIMETRIA E CAMBIO)
+Copiar a tabela de hirarquia de Contas e Orgãos para a Rede DFA (enviada por email Fechamento_custos)
+7º DU  - Atualiza Dimensoes                       --- Projeto ETL (Packet_dimensoes) 
+8ºDU   - Previa Dep V1                            --- Projeto ETL (Extracao_DEP)
+Subir ajustes de DEP (SP_DIM_AJUSTES_DEP)
+9ºDU  - Previa CP  V1                             --- Projeto ETL (Packet_fato_custo_cp_previa)
+10ºDU - Previa Dep V2                             --- Projeto ETL (Extracao_DEP)
+	Extração DEP Final Cubo                         --- Projeto ETL (Packet_Fato_cubo_DEP)
+11ºDU - Previa CP  V2                             --- Projeto ETL (Packet_fato_custo_cp_previa)
+Extração CP FinalCubo                             --- Projeto ETL (Packet_Fato_cubo_CP)
+      - Atualiza Dimensoes                        --- Projeto ETL (Packet_dimensoes) 
+12ºDU - Subir ajustes de CP (SP_DIM_AJUSTES_CP)
+        Assimentria                               --- dbay500.dbo.assimetria_delta_sintetico_cubo 
+	(validar se o Delta não é relevante, há uma consulta para a analise comentanda dentro da SP
+	 Se o Delta nao for relevante, subir o ajuste de assimetria e cambio, ok para liberação)
+        Material CEB                              --- SP_MATERIAL_CEB_CUBO
